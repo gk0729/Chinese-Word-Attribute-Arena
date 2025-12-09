@@ -1,4 +1,4 @@
-# 中文二字詞屬性對齋競技場
+# 中文二字詞屬性對齊競技場
 
 **Chinese Word Attribute Arena - v2.0**
 
