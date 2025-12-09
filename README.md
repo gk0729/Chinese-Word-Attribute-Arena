@@ -23,8 +23,8 @@
 
 ```bash
 # 1. 克隆倉庫
-git clone https://github.com/yourusername/chinese-word-attribute-arena.git
-cd chinese-word-attribute-arena
+git clone https://github.com/gk0729/Chinese-Word-Attribute-Arena.git
+cd Chinese-Word-Attribute-Arena
 
 # 2. 創建虛擬環境
 python -m venv venv
@@ -159,9 +159,9 @@ data_manager.py
 ```bibtex
 @software{chinese_word_attribute_arena_2025,
   title={Chinese Word Attribute Arena: A Competitive Framework for Language Model Evaluation},
-  author={Your Name},
+  author={gk0729},
   year={2025},
-  url={https://github.com/yourusername/chinese-word-attribute-arena}
+  url={https://github.com/gk0729/Chinese-Word-Attribute-Arena}
 }
 ```
 
@@ -171,8 +171,8 @@ data_manager.py
 
 ## 👤 作者
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
+**gk0729**
+- GitHub: [@gk0729](https://gk0729)
 - Email: your.email@example.com
 
 ## 🙏 致謝
