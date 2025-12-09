@@ -1,0 +1,83 @@
+# .gitignore for Chinese Word Attribute Arena
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# API Keys and Secrets
+.env
+.env.local
+.env.*.local
+config_secret.py
+
+# Game Data (except structure)
+data/game-logs/*.json
+data/game-logs/*.toon
+data/statistics/*.json
+!data/game-logs/.gitkeep
+!data/statistics/.gitkeep
+
+# Temporary Files
+*.tmp
+*.log
+*.bak
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+results/
+logs/
+temp/
+*.csv
+
+# Large files
+*.pkl
+*.pickle
+*.h5
+*.pt
+*.pth
