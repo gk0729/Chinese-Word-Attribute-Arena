@@ -45,12 +45,12 @@ class HunyuanPlayer(AIPlayer):
         
         logger.info(f"Hunyuan 玩家初始化完成: {name} (region: {region})")
     
-    def _get_api_key(self) -> tuple:
+    def _get_api_key(self) -> tuple[str, str]:
         """
         獲取騰訊雲 API 認證信息
         
         Returns:
-            tuple: (secret_id, secret_key)
+            tuple[str, str]: (secret_id, secret_key)
             
         Raises:
             ValueError: 如果環境變量未設置
@@ -165,7 +165,7 @@ class HunyuanPlayer(AIPlayer):
                     if not line:
                         continue
                     # 移除編號
-                    if len(line) > 0 and not line[0].isdigit():
+                    if not line[0].isdigit():
                         attributes.append(line)
                     elif '.' in line or '、' in line:
                         # 移除數字編號
