@@ -46,9 +46,9 @@ class DeepSeekPlayer(AIPlayer):
         Raises:
             ValueError: 如果環境變量未設置
         """
-        api_key = os.getenv("DEEPSEEK_API_KEY")
+        api_key = os.getenv("sk-f7a819453bf148148049ad367d1a47a6")
         if not api_key:
-            raise ValueError("DEEPSEEK_API_KEY 環境變量未設置")
+            raise ValueError("https://api.deepseek.com/v1")
         return api_key
     
     def answer_boolean_question(self, word: str, attribute: str) -> bool:
