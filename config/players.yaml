@@ -1,0 +1,15 @@
+players:
+  - name: "DeepSeek"
+    type: "deepseek"
+    model: "deepseek-chat"
+    enabled: true
+  
+  - name: "Qwen"
+    type: "qwen"
+    model: "qwen-max"
+    enabled: true
+  
+  - name: "GPT-4"
+    type: "gpt4"
+    model: "gpt-4-turbo-preview"
+    enabled: false
