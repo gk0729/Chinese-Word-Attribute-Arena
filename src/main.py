@@ -49,7 +49,9 @@ def save_results(results: dict, output_path: str):
     logger.info(f"保存結果: {output_path}")
     
     # 確保輸出目錄存在
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    output_dir = os.path.dirname(output_path)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)

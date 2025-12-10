@@ -6,18 +6,17 @@ from typing import List
 import os
 import logging
 
+from ..player import AIPlayer
+
+logger = logging.getLogger(__name__)
+
 try:
     import dashscope
     from dashscope import Generation
     DASHSCOPE_AVAILABLE = True
 except ImportError:
     DASHSCOPE_AVAILABLE = False
-    logger = logging.getLogger(__name__)
     logger.warning("dashscope 模塊未安裝，QwenPlayer 將無法使用")
-
-from ..player import AIPlayer
-
-logger = logging.getLogger(__name__)
 
 
 class QwenPlayer(AIPlayer):
@@ -156,8 +155,10 @@ class QwenPlayer(AIPlayer):
                 attributes = []
                 for line in answer_text.split('\n'):
                     line = line.strip()
+                    if not line:
+                        continue
                     # 移除編號
-                    if line and not line[0].isdigit():
+                    if len(line) > 0 and not line[0].isdigit():
                         attributes.append(line)
                     elif '.' in line or '、' in line:
                         # 移除數字編號

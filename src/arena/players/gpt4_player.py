@@ -134,8 +134,10 @@ class GPT4Player(AIPlayer):
             attributes = []
             for line in answer_text.split('\n'):
                 line = line.strip()
+                if not line:
+                    continue
                 # 移除編號
-                if line and not line[0].isdigit():
+                if len(line) > 0 and not line[0].isdigit():
                     attributes.append(line)
                 elif '.' in line or '、' in line:
                     # 移除數字編號
