@@ -212,6 +212,33 @@ Chinese-Word-Attribute-Arena/
 
 歡迎提交 Pull Request 和 Issue！
 
+### 開發理念：先規劃，後編碼
+
+本項目遵循「先規劃，後編碼」(Plan First, Code Later) 的開發理念。在開始編寫代碼之前，請先：
+
+1. 📋 **創建規劃文檔** - 詳細描述技術方案和實現思路
+2. 💬 **團隊討論評審** - 與團隊成員討論設計的可行性
+3. ✅ **確認後開始** - 只有在方案得到確認後才開始編碼
+
+### 貢獻指南
+
+詳細的貢獻流程請參考：
+- [CONTRIBUTING.md](./CONTRIBUTING.md) - 貢獻指南和代碼規範
+- [DEVELOPMENT_WORKFLOW.md](./DEVELOPMENT_WORKFLOW.md) - 詳細的開發工作流程
+
+### 快速開始貢獻
+
+1. Fork 本倉庫
+2. 創建功能分支：`git checkout -b feature/your-feature`
+3. 遵循開發工作流程進行規劃和實現
+4. 提交 Pull Request
+
+我們特別歡迎：
+- 🎯 新 AI 模型的支持（Claude、Gemini、文心一言等）
+- 📊 數據分析和可視化功能
+- 🧪 測試用例的完善
+- 📝 文檔的改進
+
 ## ❓ 常見問題
 
 ### Q: 為什麼推薦使用 DeepSeek 和 Qwen？
