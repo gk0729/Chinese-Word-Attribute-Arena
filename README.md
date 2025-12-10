@@ -6,16 +6,55 @@
 
 ## ✨ 核心特性
 
-- 🎮 **多 AI 競技**：GPT-4、Claude-3、Gemini-Pro 等同台競技
+- 🎮 **多 AI 競技**：DeepSeek、Qwen、GPT-4、Claude-3、Gemini-Pro 等同台競技
 - 📊 **12 個基礎屬性**：結構化的屬性標註系統
 - 🚀 **自填補充屬性**：發現詞海未涵蓋的新維度（+2/-2 高分值鼓勵）
 - 📈 **數據雙格式**：JSON（外部接口）+ TOON（內部優化）
 - 🔍 **自動評分裁判**：標準化的屬性推導和評分邏輯
 - 💾 **完整數據保存**：遊戲日誌、排行榜、統計分析
+- 🇨🇳 **中文優化**：默認使用 DeepSeek 和 Qwen，專為中文優化的模型
 
 ## 🎯 項目願景
 
 通過遊戲化方式自動構建「中文詞語屬性本體庫」，最終為 NLP、認知科學和語言學研究提供高質量的標註數據。
+
+## 🤖 支持的 AI 模型
+
+### 默認中文團隊（推薦）
+
+#### DeepSeek
+- **模型**：deepseek-chat
+- **優勢**：性價比極高，中文理解能力強，API 響應快
+- **費用**：輸入 $0.14/M tokens，輸出 $0.28/M tokens
+- **註冊**：[DeepSeek Platform](https://platform.deepseek.com/)
+- **環境變量**：`DEEPSEEK_API_KEY`
+
+#### 通義千問 (Qwen)
+- **模型**：qwen-max, qwen-plus
+- **優勢**：阿里雲開發，中文原生支持，語言學準確度高
+- **費用**：qwen-max $2.00/M tokens，qwen-plus $0.50/M tokens
+- **註冊**：[阿里雲 DashScope](https://dashscope.aliyun.com/)
+- **環境變量**：`DASHSCOPE_API_KEY`
+
+### 國際模型（可選）
+
+#### GPT-4
+- **模型**：gpt-4-turbo-preview
+- **優勢**：綜合能力強，推理能力優秀
+- **費用**：輸入 $10/M tokens，輸出 $30/M tokens
+- **註冊**：[OpenAI Platform](https://platform.openai.com/)
+- **環境變量**：`OPENAI_API_KEY`
+
+### 成本估算
+
+| 模型 | 20詞遊戲 | 100詞遊戲 | 1000詞遊戲 |
+|------|---------|----------|-----------|
+| DeepSeek | ~$0.01 | ~$0.05 | ~$0.50 |
+| Qwen-Plus | ~$0.02 | ~$0.10 | ~$1.00 |
+| Qwen-Max | ~$0.08 | ~$0.40 | ~$4.00 |
+| GPT-4 | ~$0.40 | ~$2.00 | ~$20.00 |
+
+*注：估算基於每詞約12個屬性判斷 + 8個自定義屬性提案*
 
 ## 🚀 快速開始
 
@@ -34,123 +73,124 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # 4. 配置 API 密鑰
-# 編輯 src/config.py，填入您的 API keys
-export OPENAI_API_KEY="your-key"
-export ANTHROPIC_API_KEY="your-key"
-export GOOGLE_API_KEY="your-key"
+# 複製環境變量模板
+cp .env.example .env
+
+# 編輯 .env 文件，填入您的 API keys
+# 至少需要配置以下其中一個：
+# - DEEPSEEK_API_KEY (推薦，性價比高)
+# - DASHSCOPE_API_KEY (Qwen API，中文表現優秀)
+# - OPENAI_API_KEY (可選)
 ```
 
 ### 運行遊戲
 
 ```bash
-# 基礎運行
+# 基礎運行（使用默認的 DeepSeek + Qwen 團隊）
 python src/main.py
 
-# 自定義參數
-python src/main.py --rounds 500 --players gpt-4 claude-3 gemini-pro --judge standard
-
-# 查看幫助
-python src/main.py --help
+# 查看結果
+cat results/game_results_*.json
 ```
 
-### 查看結果
+## 📊 遊戲規則
 
-```bash
-# 轉換為 JSON 格式
-python scripts/json_to_toon.py data/game-logs/2025-12-31.json
+### 基礎屬性問答（12個屬性）
+- 每個詞語需要回答 12 個基礎屬性問題
+- 正確回答得 1 分，錯誤回答得 0 分
 
-# 分析結果
-python scripts/analyze_results.py --input data/game-logs/2025-12-31.json
-
-# 生成報告
-python scripts/generate_report.py --output REPORT.md
-```
+### 自定義屬性提案（8個槽位）
+- 每個詞語可以提出最多 8 個自定義屬性
+- 有價值的新屬性可獲得額外分數
+- 鼓勵發現詞典未涵蓋的語言學特徵
 
 ## 📊 數據格式
 
-### JSON 格式（外部接口）
+### JSON 格式（遊戲結果）
 ```json
 {
   "metadata": {
-    "timestamp": "2025-12-31T23:59:59",
-    "version": "2.0"
+    "timestamp": "2025-12-10T10:30:00",
+    "total_rounds": 20,
+    "total_players": 2
   },
-  "final_leaderboard": {
-    "1st": {
-      "name": "GPT-4",
-      "total_score": 6250,
-      "accuracy_rate": 0.848
+  "leaderboard": [
+    {
+      "name": "DeepSeek",
+      "model": "deepseek-chat",
+      "score": 156,
+      "accuracy": 0.85
     }
-  }
+  ]
 }
 ```
-
-### TOON 格式（內部優化）
-```toon
-@start GAME_RESULTS
-  LEADERBOARD {
-    rank_1 = {
-      name: GPT-4
-      total_score: 6250
-      accuracy_rate: 0.848
-    }
-  }
-@end GAME_RESULTS
-```
-
-詳見 [FORMAT_GUIDE.md](docs/FORMAT_GUIDE.md)
 
 ## 🏗️ 系統架構
 
 ```
-外部系統 (API)
-    ↓ JSON
-    ↓
-main.py (入口)
-    ↓
-game_engine.py
-├─ word-corpus.toon (快速讀取)
-├─ judge_ai.py (推導屬性)
-└─ ai_player.py (AI 回答)
-    ↓
-data_manager.py
-├─ results.json (標準格式)
-└─ results.toon (內部優化)
-    ↓ JSON
-    ↓
-外部系統 (API)
+Chinese-Word-Attribute-Arena/
+├── src/
+│   ├── arena/
+│   │   ├── __init__.py
+│   │   ├── player.py           # AI玩家基類
+│   │   ├── judge.py            # 裁判系統
+│   │   ├── game_engine.py      # 遊戲引擎
+│   │   ├── player_factory.py   # 玩家工廠
+│   │   └── players/
+│   │       ├── deepseek_player.py
+│   │       ├── qwen_player.py
+│   │       └── gpt4_player.py
+│   └── main.py                 # 主程序入口
+├── config/
+│   └── players.yaml            # 玩家配置
+├── data/
+│   ├── test_words.txt          # 測試詞表
+│   └── base_attributes.yaml    # 基礎屬性
+└── results/
+    └── game_results_*.json     # 遊戲結果
 ```
-
-詳見 [ARCHITECTURE.md](docs/ARCHITECTURE.md)
-
-## 📚 文檔
-
-- [快速開始指南](docs/SETUP_GUIDE.md)
-- [系統架構說明](docs/ARCHITECTURE.md)
-- [數據格式對比](docs/FORMAT_GUIDE.md)
-- [API 參考](docs/API_REFERENCE.md)
-- [數據模式定義](docs/DATA_SCHEMA.md)
-- [使用示例](docs/EXAMPLES.md)
 
 ## 📈 項目進度
 
 ### v2.0 (當前)
 - ✅ 12 個基礎屬性勾選
 - ✅ 自填補充屬性系統
-- ✅ JSON + TOON 雙格式支持
 - ✅ 完整的評分機制
+- ✅ DeepSeek 玩家支持
+- ✅ Qwen 玩家支持
+- ✅ GPT-4 玩家支持
+- ✅ 玩家工廠系統
+- ✅ 遊戲引擎和裁判系統
 - ⏳ 自動化測試套件
 - ⏳ GitHub Actions CI/CD
 
 ### 未來規劃
-- 中文原生格式優化
-- 屬性資源庫動態擴展
 - Web 可視化界面
+- 更多 AI 模型支持（Claude、Gemini 等）
+- 屬性知識庫優化
 - 學術論文發布
 
 ## 🤝 貢獻
 
-歡迎 PR 和 Issue！詳見 [CONTRIBUTING.md](CONTRIBUTING.md)
+歡迎提交 Pull Request 和 Issue！
+
+## ❓ 常見問題
+
+### Q: 為什麼推薦使用 DeepSeek 和 Qwen？
+A: 這兩個模型都是專為中文優化的，在中文語言學任務上表現優秀，且成本遠低於 GPT-4。DeepSeek 性價比極高，Qwen 由阿里雲開發，對中文理解深刻。
+
+### Q: 可以添加自己的 AI 模型嗎？
+A: 完全可以！繼承 `AIPlayer` 基類並實現相應方法即可。參考 `src/arena/players/` 中的實現。
+
+### Q: 遊戲數據在哪裡？
+A: 所有遊戲結果存儲在 `results/` 目錄中，使用 JSON 格式保存。
+
+### Q: API 調用失敗怎麼辦？
+A: 檢查以下幾點：
+1. 確認 API Key 已正確配置在 `.env` 文件中
+2. 確認 API 餘額充足
+3. 檢查網絡連接是否正常
+4. 查看日誌文件了解具體錯誤信息
 
 ## 📝 引用
 
@@ -177,22 +217,9 @@ data_manager.py
 
 ## 🙏 致謝
 
-感謝 OpenAI、Anthropic、Google 提供的 API 支持。
+感謝 DeepSeek、阿里雲（Qwen）、OpenAI 等提供的優秀 API 支持。
 
 ---
 
-## ❓ 常見問題
-
-### Q: 為什麼要用 TOON 格式？
-A: TOON 格式相比 JSON 體積更小、解析更快，特別適合內部運行。外部接口仍然使用通用的 JSON 格式。
-
-### Q: 可以添加自己的 AI 模型嗎？
-A: 完全可以！詳見 [examples/custom_ai_player.py](examples/custom_ai_player.py)
-
-### Q: 遊戲數據在哪裡？
-A: 所有遊戲結果存儲在 `data/game-logs/` 中，分別提供 JSON 和 TOON 格式。
-
----
-
-**最後更新**：2025-12-09  
+**最後更新**：2025-12-10  
 **項目狀態**：🟢 Active Development
