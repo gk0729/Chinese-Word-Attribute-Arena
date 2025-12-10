@@ -114,7 +114,10 @@ python src/main.py
 
 <!-- 如果是，請列出變更並說明原因 -->
 ```
-# requirements.txt 變更
+# requirements.txt 變更示例
++ openai==1.3.5      # 添加：用於 GPT-4 支持
+- old-library==1.0.0 # 移除：已不再使用
+~ requests==2.31.0   # 更新：安全修復（從 2.28.0）
 ```
 
 ## 部署注意事項

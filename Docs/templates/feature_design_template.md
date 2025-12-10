@@ -215,14 +215,14 @@ src/
 ### 6.1 新增依賴
 
 ```
-# requirements.txt 新增
-new-library==1.2.3  # 用於 XXX 功能
-another-lib>=2.0.0  # 用於 YYY 功能
+# requirements.txt 新增示例
+openai==1.3.5       # 用於調用 OpenAI API（如添加 GPT-4 支持）
+pydantic==2.0.0     # 用於數據驗證和序列化（如果需要）
 ```
 
 ### 6.2 依賴說明
-- **new-library**: 為什麼需要這個庫
-- **another-lib**: 為什麼需要這個庫
+- **示例庫名**: 說明為什麼需要這個庫，它解決什麼問題
+- **版本選擇**: 解釋為什麼選擇這個版本（穩定性、功能需求等）
 
 ## 7. 測試計劃
 

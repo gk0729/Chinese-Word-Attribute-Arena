@@ -157,15 +157,19 @@ python src/main.py
 # 使用特定配置
 python src/main.py --config config/blood_awakening.yaml
 
-# 運行測試（未來）
-pytest
-pytest tests/test_specific.py
-pytest -v  # 詳細輸出
-pytest --cov  # 帶覆蓋率
+# 手動測試（當前）
+python src/main.py
+python src/main.py --config config/blood_awakening.yaml
 
-# 代碼格式化（未來）
-black src/
-flake8 src/
+# 運行測試（計劃中，測試套件開發後可用）
+# pytest
+# pytest tests/test_specific.py
+# pytest -v  # 詳細輸出
+# pytest --cov  # 帶覆蓋率
+
+# 代碼格式化（計劃中，未來添加）
+# black src/
+# flake8 src/
 ```
 
 ### Git 操作
