@@ -13,3 +13,21 @@ players:
     type: "gpt4"
     model: "gpt-4-turbo-preview"
     enabled: false
+  
+  # 新增：騰訊混元
+  - name: "Hunyuan-Turbo"
+    type: "hunyuan"
+    model: "hunyuan-turbo"
+    enabled: true
+    blood_awakening: true
+    description: "騰訊混元大模型，中文理解優秀"
+    cost_per_1m_tokens: "$1.0"
+  
+  # 新增：智譜 GLM-4
+  - name: "GLM-4-Plus"
+    type: "glm"
+    model: "glm-4-plus"
+    enabled: true
+    blood_awakening: true
+    description: "清華智譜 GLM-4，學術語料豐富"
+    cost_per_1m_tokens: "$0.7"
