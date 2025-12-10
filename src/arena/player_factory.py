@@ -98,6 +98,39 @@ class PlayerFactory:
         return cls.create_players(default_configs)
 
 
+    @classmethod
+    def create_blood_awakening_team(cls) -> List[AIPlayer]:
+        """
+        創建血脈覺醒陣容（純中文原生模型）
+        
+        Returns:
+            List[AIPlayer]: 血脈覺醒陣容玩家列表
+        """
+        blood_awakening_configs = [
+            {
+                "name": "DeepSeek-V3 🔥",
+                "type": "deepseek",
+                "model": "deepseek-chat",
+                "enabled": True
+            },
+            {
+                "name": "Hunyuan-Turbo 🔥",
+                "type": "hunyuan",
+                "model": "hunyuan-turbo",
+                "enabled": True
+            },
+            {
+                "name": "GLM-4-Plus 🔥",
+                "type": "glm",
+                "model": "glm-4-plus",
+                "enabled": True
+            }
+        ]
+        
+        logger.info("創建血脈覺醒陣容")
+        return cls.create_players(blood_awakening_configs)
+
+
 def initialize_player_factory():
     """初始化玩家工廠，註冊所有可用的玩家類型"""
     try:
@@ -117,5 +150,17 @@ def initialize_player_factory():
         PlayerFactory.register_player("gpt4", GPT4Player)
     except ImportError as e:
         logger.warning(f"無法導入 GPT4Player: {e}")
+    
+    try:
+        from .players.hunyuan_player import HunyuanPlayer
+        PlayerFactory.register_player("hunyuan", HunyuanPlayer)
+    except ImportError as e:
+        logger.warning(f"無法導入 HunyuanPlayer: {e}")
+    
+    try:
+        from .players.glm_player import GLMPlayer
+        PlayerFactory.register_player("glm", GLMPlayer)
+    except ImportError as e:
+        logger.warning(f"無法導入 GLMPlayer: {e}")
     
     logger.info(f"玩家工廠初始化完成，已註冊 {len(PlayerFactory.AVAILABLE_PLAYERS)} 種玩家類型")

@@ -1,0 +1,44 @@
+# 血脈覺醒陣容配置 - 純中文原生模型對決
+
+name: "血脈覺醒陣容"
+description: "驗證中文原生 LLM 在中文語言學任務上的優勢 (+32% Buff 假設)"
+
+players:
+  # 主力陣容：中文原生三巨頭
+  - type: deepseek
+    name: "DeepSeek-V3 🔥"
+    model: "deepseek-chat"
+    enabled: true
+    cost_estimate: "$0.14/1M tokens"
+  
+  - type: hunyuan
+    name: "Hunyuan-Turbo 🔥"
+    model: "hunyuan-turbo"
+    enabled: true
+    cost_estimate: "$1.0/1M tokens"
+  
+  - type: glm
+    name: "GLM-4-Plus 🔥"
+    model: "glm-4-plus"
+    enabled: true
+    cost_estimate: "$0.7/1M tokens"
+  
+  # 對照組：國際模型
+  - type: gpt4
+    name: "GPT-4 Turbo"
+    model: "gpt-4-turbo-preview"
+    enabled: true
+    cost_estimate: "$10/1M tokens"
+
+experiment:
+  hypothesis: "中文原生模型在中文詞語屬性判斷上準確率 ≥ GPT-4 + 32%"
+  test_rounds: 500
+  expected_cost: "$15 (¥100)"
+  
+  metrics:
+    - name: "準確率"
+      target: "> 90%"
+    - name: "血脈覺醒 Buff"
+      target: "+32% vs GPT-4"
+    - name: "文化理解深度"
+      target: "顯著優於 GPT-4"

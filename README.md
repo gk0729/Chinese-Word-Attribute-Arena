@@ -20,14 +20,28 @@
 
 ## 🤖 支持的 AI 模型
 
-### 默認中文團隊（推薦）
+### 中文原生模型（血脈覺醒陣容 🔥）
 
-#### DeepSeek
+#### DeepSeek-V3
 - **模型**：deepseek-chat
 - **優勢**：性價比極高，中文理解能力強，API 響應快
 - **費用**：輸入 $0.14/M tokens，輸出 $0.28/M tokens
 - **註冊**：[DeepSeek Platform](https://platform.deepseek.com/)
 - **環境變量**：`DEEPSEEK_API_KEY`
+
+#### 騰訊混元 (Hunyuan)
+- **模型**：hunyuan-turbo, hunyuan-lite
+- **優勢**：騰訊出品，中文語境理解優秀，專為中文優化
+- **費用**：~$1.0/M tokens
+- **註冊**：[騰訊雲控制台](https://console.cloud.tencent.com/cam/capi)
+- **環境變量**：`HUNYUAN_SECRET_ID`, `HUNYUAN_SECRET_KEY`
+
+#### 智譜 GLM-4 (GLM)
+- **模型**：glm-4-plus, glm-4-flash
+- **優勢**：清華出品，學術語料豐富，理解深刻
+- **費用**：~$0.7/M tokens
+- **註冊**：[智譜 AI 開放平台](https://open.bigmodel.cn/usercenter/apikeys)
+- **環境變量**：`ZHIPUAI_API_KEY`
 
 #### 通義千問 (Qwen)
 - **模型**：qwen-max, qwen-plus
@@ -36,7 +50,7 @@
 - **註冊**：[阿里雲 DashScope](https://dashscope.aliyun.com/)
 - **環境變量**：`DASHSCOPE_API_KEY`
 
-### 國際模型（可選）
+### 國際模型（對照組）
 
 #### GPT-4
 - **模型**：gpt-4-turbo-preview
@@ -50,11 +64,35 @@
 | 模型 | 20詞遊戲 | 100詞遊戲 | 1000詞遊戲 |
 |------|---------|----------|-----------|
 | DeepSeek | ~$0.01 | ~$0.05 | ~$0.50 |
+| Hunyuan | ~$0.04 | ~$0.20 | ~$2.00 |
+| GLM-4 | ~$0.03 | ~$0.15 | ~$1.50 |
 | Qwen-Plus | ~$0.02 | ~$0.10 | ~$1.00 |
 | Qwen-Max | ~$0.08 | ~$0.40 | ~$4.00 |
 | GPT-4 | ~$0.40 | ~$2.00 | ~$20.00 |
 
 *注：估算基於每詞約12個屬性判斷 + 8個自定義屬性提案*
+
+## 🔥 血脈覺醒實驗
+
+驗證假設：**中文原生模型在中文語言學任務上準確率顯著高於國際模型**（預期 +32% Buff）
+
+### 快速啟動血脈覺醒陣容
+
+```bash
+# 使用血脈覺醒陣容配置（包含 DeepSeek、Hunyuan、GLM-4 與 GPT-4 對照）
+python src/main.py --config config/blood_awakening.yaml --rounds 500
+```
+
+### 實驗設計
+
+- **主力陣容**：DeepSeek-V3 🔥 + Hunyuan-Turbo 🔥 + GLM-4-Plus 🔥
+- **對照組**：GPT-4 Turbo
+- **測試輪次**：500 輪
+- **預期成本**：~$15 (約¥100)
+- **核心指標**：
+  - 準確率 > 90%
+  - 血脈覺醒 Buff：+32% vs GPT-4
+  - 文化理解深度：顯著優於 GPT-4
 
 ## 🚀 快速開始
 
