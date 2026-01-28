@@ -251,7 +251,7 @@ A: 檢查以下幾點：
 
 **gk0729**
 - GitHub: [@gk0729](https://gk0729)
-- Email: your.email@example.com
+- Email: gray0729@graytrajcetory.net
 
 ## 🙏 致謝
 
