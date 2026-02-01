@@ -1,48 +1,53 @@
 base_attributes:
-  - name: "結構屬性_並列結構"
-    description: "兩字是否為並列關係"
+  # 構詞結構屬性（4題）
+  - name: "構詞結構_聯合式"
+    description: "兩個語素是否為並列或聯合關係（如：朋友、開關、高低）"
     type: "boolean"
   
-  - name: "結構屬性_偏正結構"
-    description: "兩字是否為偏正關係"
+  - name: "構詞結構_偏正式"
+    description: "是否為偏正結構（修飾語+中心語，如：火車、美麗、輕鬆）"
     type: "boolean"
   
+  - name: "構詞結構_動賓式"
+    description: "是否為動賓結構（動詞+賓語，如：吃飯、開車、讀書）"
+    type: "boolean"
+  
+  - name: "構詞結構_主謂式"
+    description: "是否為主謂結構（主語+謂語，如：地震、日出、心痛）"
+    type: "boolean"
+  
+  # 語義屬性（3題）
   - name: "語義屬性_具體性"
-    description: "詞義是否指向具體事物"
+    description: "詞義是否指向可感知的具體事物或動作（如：桌子、跑步、香味）"
     type: "boolean"
   
   - name: "語義屬性_抽象性"
-    description: "詞義是否為抽象概念"
+    description: "詞義是否為抽象概念或非物質性內容（如：正義、思考、感受）"
     type: "boolean"
   
+  - name: "語義屬性_關係概念"
+    description: "是否主要表達事物間的關係或連接（如：與、對於、因為、之間）"
+    type: "boolean"
+  
+  # 語用屬性（2題）
   - name: "語用屬性_正式度"
-    description: "是否為正式場合用語"
+    description: "是否適用於正式場合或書面語境（如：閣下、茲、惟）"
     type: "boolean"
   
   - name: "語用屬性_口語化"
-    description: "是否常用於口語"
+    description: "是否常用於日常口語或非正式對話（如：搞定、弄、咋樣）"
     type: "boolean"
   
-  - name: "時態屬性_時代性"
-    description: "是否具有明顯時代特徵"
-    type: "boolean"
-  
+  # 情感屬性（2題）
   - name: "情感屬性_褒義"
-    description: "是否含褒義色彩"
+    description: "是否帶有正面評價或讚美色彩（如：英勇、優秀、崇高）"
     type: "boolean"
   
   - name: "情感屬性_貶義"
-    description: "是否含貶義色彩"
+    description: "是否帶有負面評價或批評色彩（如：卑鄙、醜陋、狡猾）"
     type: "boolean"
   
-  - name: "文化屬性_象徵義"
-    description: "是否具有文化象徵意義"
-    type: "boolean"
-  
-  - name: "認知屬性_高頻詞"
-    description: "是否為日常高頻使用詞"
-    type: "boolean"
-  
-  - name: "認知屬性_專業詞"
-    description: "是否為某領域專業詞彙"
+  # 文化屬性（1題）
+  - name: "文化屬性_文化負荷"
+    description: "是否承載特定文化意涵或象徵意義（如：龍、鳳凰、中秋、紅包）"
     type: "boolean"
